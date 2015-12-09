@@ -1,7 +1,6 @@
 package com.padhaarosaa.ui.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -9,6 +8,7 @@ import android.view.MenuItem;
 
 import com.padhaarosaa.R;
 import com.padhaarosaa.core.preference.Prefrences;
+import com.padhaarosaa.ui.fragment.ListingFragment;
 import com.padhaarosaa.ui.fragment.MainActivityFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity
         }
         else
         {
-            Snackbar.make(this.getWindow().getDecorView(), "User already logged in..", Snackbar.LENGTH_LONG).show();
+            //Snackbar.make(this.getWindow().getDecorView(), "User already logged in..", Snackbar.LENGTH_LONG).show();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new ListingFragment()).commit();
         }
     }
 

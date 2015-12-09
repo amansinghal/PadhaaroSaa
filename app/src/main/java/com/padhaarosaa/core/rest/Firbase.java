@@ -2,6 +2,7 @@ package com.padhaarosaa.core.rest;
 
 import com.facebook.AccessToken;
 import com.firebase.client.Firebase;
+import com.firebase.client.ValueEventListener;
 /**
  * Created by gspl on 12/9/2015.
  */
@@ -17,5 +18,11 @@ public class Firbase
         /* Logged out of Facebook so do a logout from the Firebase app */
             ref.unauth();
         }
+    }
+
+    public static void getData(ValueEventListener valueEventListener)
+    {
+
+        ref.addValueEventListener(valueEventListener);
     }
 }
