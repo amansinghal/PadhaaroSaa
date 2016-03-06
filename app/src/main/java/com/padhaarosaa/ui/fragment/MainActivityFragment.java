@@ -14,7 +14,7 @@ import com.firebase.client.FirebaseError;
 import com.padhaarosaa.R;
 import com.padhaarosaa.core.fragment.BaseFragment;
 import com.padhaarosaa.core.preference.Prefrences;
-import com.padhaarosaa.core.rest.Firbase;
+import com.padhaarosaa.core.rest.FirebaseConstants;
 
 import butterknife.Bind;
 
@@ -55,13 +55,15 @@ public class MainActivityFragment extends BaseFragment
             {
                 // App code
                 System.out.println(loginResult);
-                Firbase.onFacebookAccessTokenChange(loginResult.getAccessToken(), new Firebase.AuthResultHandler()
+                FirebaseConstants.onFacebookAccessTokenChange(loginResult.getAccessToken(), new Firebase.AuthResultHandler()
                 {
                     @Override
                     public void onAuthenticated(AuthData authData)
                     {
-                        Prefrences.getWriteInstance(getActivity()).putBoolean(Prefrences.PREF_IS_LOGGED_IN, true)
-                                .putString(Prefrences.PREF_UID, authData.getToken()).commit();
+                        Prefrences.getWriteInstance(getActivity())
+                                .putBoolean(Prefrences.PREF_IS_LOGGED_IN, true)
+                                .putString(Prefrences.PREF_UID, authData.getToken())
+                                .commit();
                         Snackbar.make(loginButton, "Login succeed", Snackbar.LENGTH_LONG).show();
                     }
 

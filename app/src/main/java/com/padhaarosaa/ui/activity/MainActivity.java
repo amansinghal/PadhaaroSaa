@@ -20,15 +20,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        if(!Prefrences.isUserLoggedIn(this))
-        {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new MainActivityFragment()).commit();
-        }
-        else
-        {
-            //Snackbar.make(this.getWindow().getDecorView(), "User already logged in..", Snackbar.LENGTH_LONG).show();
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new ListingFragment()).commit();
-        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new ListingFragment()).commit();
     }
 
     @Override
